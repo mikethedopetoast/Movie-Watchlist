@@ -1,0 +1,240 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;    
+}
+
+:root {
+    --base-color: #FFFFFF;
+    --light-color: #A5A5A5;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--base-color);
+    font-family: "Inter", sans-serif;
+    color: #000000;
+}
+
+/* Header */
+header,
+main {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 700px;
+}
+
+header {
+    color: var(--base-color);
+    background-image:
+        linear-gradient(rgba(14, 14, 14, .5), 
+        rgba(14, 14, 14, .8)), 
+        url("images/andre-tan-THJJRUhNlEc-unsplash.jpg");
+    background-size: cover;
+    background-position: 0 25%;
+    width: 550px;
+    height: 208px;
+}
+
+.header-container {
+    padding: 3.125em;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.header-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 1 rem;
+}
+
+.header-nav {
+    color: var(--base-color);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.header-nav:hover {
+    scale: 1.1;
+}
+
+/* Search section */
+.search-bar {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+}
+
+.search-bar i {
+    color: var(--light-color);
+    position: absolute;
+    left: 13px;
+}
+
+.search-input {
+    color: #6B7280;
+    background: var(--base-color);
+    padding: 0.57em 2.7em;
+    border-radius: 6px 0px 0px 6px;
+    border: 1px solid var(--light-color);
+    outline: none;
+    width: 342px;
+    height: 38px;
+    font-weight: 500;
+}
+
+.search-btn {
+    color: #374151;
+    background-color: #F9FAFB;
+    border-radius: 0px 6px 6px 0px;
+    border: 1px solid var(--light-color);
+    width: 120px;
+    height: 38px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer; 
+}
+
+.search-btn:hover {
+    color: var(--base-color);
+    background-color: #008000;
+}
+
+/* Movie container */
+.movies-container {
+    padding: 3.125em 6.25em;
+    height: 70vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.movie {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 1.5em;
+}
+
+.poster-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.movie-poster {
+    border-radius: 10px;
+    width: 150px;
+}
+
+.movie-title {
+    font-size: 1.125rem;
+    font-weight: 500;
+}
+
+.movie-rating {
+    margin-left: 0.875em;
+    font-size: 0.75rem;
+}
+
+.movie-rating i {
+    color: #FEC654;
+    margin-right: 0.1em;
+}
+
+.movie-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+}
+
+.movie-runtime,
+.movie-genre {
+    margin-right: 1.125em;
+}
+
+.movie-description {
+    color: var(--light-color);
+    font-size: 0.875rem;
+}
+
+hr {
+    color: var(--light-color);
+    width: 100%;
+    margin: 1em 0;
+}
+
+/* Add and Remove Button */
+.btn-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
+}
+
+.btn-wrapper i {
+    scale: 1.5;
+}
+
+.fa-circle-plus {
+    color: #008000;
+}
+
+.fa-circle-minus {
+    color: #FF0000;
+}
+
+.add-remove-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+.add-remove-btn:focus {
+    font-weight: 700;
+}
+
+/* No Results */
+.body-wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.body-wrapper a {
+    text-decoration: none;
+}
+
+.body-wrapper a:hover {
+    font-weight: 700;
+}
+
+.fa-film {
+    color: var(--light-color);
+    position: absolute;
+    margin-top: -1.5em;
+}
+
+.no-data {
+    color: var(--light-color);
+    text-align: center;
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+/* Media queries */
+@media (max-width: 500px) {
+    .header-container {
+        flex-direction: column;
+        padding-top: 1.25em;
+    }
+    .movies-container {
+        padding: 2.5em 0.625em;
+    }
+}
