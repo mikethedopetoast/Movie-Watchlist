@@ -9,7 +9,7 @@ let watchlist = JSON.parse(localStorage.getItem("watchlist") || "[]")
 // To display search results or return no results when movies are not found in database
 formEl.addEventListener("submit", (e) => {
     e.preventDefault()
-    fetch(`http://www.omdbapi.com/?s=${searchInput.value}&type=movie&apikey=5e2a632d`)
+    fetch(`/api/omdb?s=${searchInput.value}&type=movie&apikey=5e2a632d`)
         .then(res => res.json())
         .then(data => {
             moviesHtml = ""
@@ -23,15 +23,21 @@ formEl.addEventListener("submit", (e) => {
                 renderNoResults()
             }
         })
+        .catch(error => {
+            console.error("Error fetching data:", error)
+        })
 })
 
 // To get detailed information of each movie
-function getMovieDetails(movieId) {
-    fetch(`http://www.omdbapi.com/?i=${movieId}&type=movie&apikey=5e2a632d`)
+function getMovieDetails(imdbID) {
+    fetch(`/api/omdb?i=${imdbID}&apikey=5e2a632d`)
         .then(res => res.json())
         .then(data => {
             moviesDetailsArray.push(data)
             renderResults(data)
+        })
+        .catch(error => {
+            console.error("Error fetching movie details:", error)
         })
 }
 

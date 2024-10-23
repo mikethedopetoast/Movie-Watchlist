@@ -1,6 +1,17 @@
 const watchlistContainer = document.getElementById("watchlist-container")
 let watchlistHtml = ""
-let watchlistArray = JSON.parse(localStorage.getItem("watchlist") || [])
+let watchlistArray = []
+
+try {
+    const watchlistJson = localStorage.getItem("watchlist")
+    if (watchlistJson) {
+        watchlistArray = JSON.parse(watchlistJson)
+    }
+} catch (error) {
+    console.error("Error parsing watchlist from localStorage:", error)
+    // Clear localStorage here if there is any suspected corrupted data:
+    // localStorage.removeItem("watchlist")
+}
 
 render()
 
